@@ -1,5 +1,7 @@
 # Hadoop Lectures
 
+## Lecture 0 Tools
+
 ## Lecture 1 HDFS
 
 ## Lecture 2 YARN
