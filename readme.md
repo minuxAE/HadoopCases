@@ -41,11 +41,47 @@ A container is a request to hold resources on a `YARN` cluster for an applicatio
 
 ### YARN Daemons
 
-| Component | Description |
-| --------- | ----------- |
-|           |             |
+| Component                | Description                                                  |
+| ------------------------ | ------------------------------------------------------------ |
+| Resource Manager (RM)    | Allocates resources<br />RM has two main components: Scheduler & Application Manager |
+| Node Manager (NM)        | Each work node has an NM daemon<br />Each NM tracks the available data processing resources and usage |
+| Application Manager (AM) | The pre-application AM is responsible for negotiating resources from the RM and working with the NMs to execute and monitor the tasks<br />Runs on a worker node |
+| Job History Server       | Achieves jobs and meta-data                                  |
 
+### Schedulers
 
+Some pluggable schedulers are supported in `YARN`:
+
+- FIFO: Allocates resources based on arrival time
+- Capacity Scheduler (default): Allocates resources to pools, with FIFO scheduling within each pool
+-  Fair Scheduler: Allows `YARN` applications to share resources in large clusters fairly, which is default in `CDH5` and later releases (also used in Oracle DBA)
+
+Configure Fair Scheduler Pluggable Policy:
+
+```xml
+# yarn-site.xml
+<property>
+	<name>yarn.resourcemanager.scheduler.class</name>
+	<value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
+</property>
+```
+
+More details can be found in [hadoop docs](https://hadoop.apache.org/docs/current/hadoop-yarn)
+
+### Commands
+
+`yarn application` commands can be used to list, track, and kill applications:
+
+```
+$ yarn application <options>
+```
+
+| <options>             | Description                                                  |
+| --------------------- | ------------------------------------------------------------ |
+| -list                 | List applications from the Resource Manager                  |
+| -appStates            | Works with `-list` to filter applications based on input comma-separated list of application states such as `ALL`, `NEW`,`NEW_SAVING` |
+| -status ApplicationID | Prints the status of the application                         |
+| -kill ApplicationID   | Kills the application                                        |
 
 ## Lecture 3 Map Reduce
 
