@@ -35,7 +35,7 @@ Distributed Storage: `HDFS`, `NoSQL DataBase`
 - Improved cluster utilization
 - Support for workloads other than MR
 
-<img src="C:\Minux\Projects\Java\HadoopCases\Figures\NodeManager.png" alt="NodeManager" style="zoom:50%;" />
+<img src="Figures\NodeManager.png" alt="NodeManager" style="zoom:50%;" />
 
 A container is a request to hold resources on a `YARN` cluster for an application.
 
