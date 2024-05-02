@@ -6,3 +6,4 @@ RemoteSystemsTempFiles
 TestDemo/
 Figures/*.vsdx
 Figures/*.~vsdx
+/**/jedis-2.7.2/*
